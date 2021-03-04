@@ -2,15 +2,16 @@ import express from "express";
 import serverless from "serverless-http";
 import logError from "./api/middleware/logError";
 import { hasIllegalCharacters } from "./api/middleware/hasIllegalCharacters";
+import { hasShiftValue } from "./api/middleware/hasShiftValue";
 
-import route from "./api/routes/route";
+import ceasarRoutes from "./api/routes/ceasar";
 
 const app = express();
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-app.use("/.netlify/functions/api", hasIllegalCharacters, route);
+app.use("/.netlify/functions/api/ceasar", [hasIllegalCharacters], ceasarRoutes);
 
 app.use(logError);
 

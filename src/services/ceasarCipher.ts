@@ -48,5 +48,5 @@ export const crackCipher = (text: string) => {
     }
   }
 
-  return [language, max, message];
+  return { score: max, language, message };
 };
